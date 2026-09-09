@@ -12,3 +12,9 @@ ARX-X5:
 
 ur5-wsg:
   file_path: "./assets/embodiments/ur5-wsg"
+
+openarm-v1:
+  file_path: "./assets/embodiments/openarm-v1"
+
+yam:
+  file_path: "./assets/embodiments/yam"
