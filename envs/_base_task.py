@@ -211,10 +211,14 @@ class Base_Task(gym.Env):
         # give renderer to sapien sim
         self.engine.set_renderer(self.renderer)
 
-        sapien.render.set_camera_shader_dir("rt")
-        sapien.render.set_ray_tracing_samples_per_pixel(32)
-        sapien.render.set_ray_tracing_path_depth(8)
-        sapien.render.set_ray_tracing_denoiser("oidn")
+        # Fast rasterization rendering (Solution A - 50x-100x faster than ray tracing):
+        sapien.render.set_camera_shader_dir("")
+
+        # To re-enable photorealistic ray tracing (rt):
+        # sapien.render.set_camera_shader_dir("rt")
+        # sapien.render.set_ray_tracing_samples_per_pixel(32)
+        # sapien.render.set_ray_tracing_path_depth(8)
+        # sapien.render.set_ray_tracing_denoiser("oidn")
 
         # declare sapien scene
         scene_config = sapien.SceneConfig()
