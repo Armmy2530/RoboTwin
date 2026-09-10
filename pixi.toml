@@ -1,0 +1,26 @@
+[workspace]
+authors = ["armmy2530 <sutigran2557@gmail.com>"]
+channels = ["conda-forge"]
+name = "robotwin"
+platforms = ["linux-64"]
+version = "0.1.0"
+
+[tasks]
+install-deps = "uv pip install -r requirements.txt"
+build-curobo = "pip install -e envs/curobo --no-build-isolation"
+download-assets = "python assets/_download.py && cd assets && unzip -o -q background_texture.zip && unzip -o -q embodiments.zip && unzip -o -q objects.zip"
+test-cam = "python scripts/capture_camera_frames.py --embodiment yam-abc"
+
+[dependencies]
+python = "3.10.*"
+gxx = "13.*"
+gcc = "13.*"
+libxcrypt = ">=4.4.36,<5"
+uv = ">=0.4"
+pip = "*"
+ninja = "*"
+
+[activation.env]
+CUDA_HOME = "${CUDA_HOME:-/usr/local/cuda}"
+PATH = "$CUDA_HOME/bin:$PATH"
+LD_LIBRARY_PATH = "$CONDA_PREFIX/lib/python3.10/site-packages/torch/lib:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cuda_nvrtc/lib:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cuda_runtime/lib:$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/nvjitlink/lib:$CUDA_HOME/lib64:$LD_LIBRARY_PATH"
