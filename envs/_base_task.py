@@ -212,7 +212,7 @@ class Base_Task(gym.Env):
         self.engine.set_renderer(self.renderer)
 
         # Fast rasterization rendering (Solution A - 50x-100x faster than ray tracing):
-        sapien.render.set_camera_shader_dir("")
+        sapien.render.set_camera_shader_dir("default")
 
         # To re-enable photorealistic ray tracing (rt):
         # sapien.render.set_camera_shader_dir("rt")
