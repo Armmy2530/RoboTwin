@@ -121,6 +121,18 @@ class Robot:
         self.left_entity.set_root_pose(self.left_entity_origion_pose)
         self.right_entity.set_root_pose(self.right_entity_origion_pose)
 
+        for link in self.left_entity.get_links():
+            comp = link.entity.find_component_by_type(sapien.physx.PhysxRigidBaseComponent)
+            if comp:
+                for shape in comp.get_collision_shapes():
+                    shape.set_collision_groups([1, 1, 1, 1])
+
+        for link in self.right_entity.get_links():
+            comp = link.entity.find_component_by_type(sapien.physx.PhysxRigidBaseComponent)
+            if comp:
+                for shape in comp.get_collision_shapes():
+                    shape.set_collision_groups([1, 1, 1, 2])
+
     def reset(self, scene, need_topp=False, **kwargs):
         self._init_robot_(scene, need_topp, **kwargs)
 
