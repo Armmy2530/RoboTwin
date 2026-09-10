@@ -114,8 +114,8 @@ class Camera:
                 width=camera_config["w"],
                 height=camera_config["h"],
                 fovy=np.deg2rad(camera_config["fovy"]),
-                near=near,
-                far=far,
+                near=camera_config.get("near", near),
+                far=camera_config.get("far", far),
             )
             camera.entity.set_pose(sapien.Pose(mat44))
 
@@ -132,13 +132,15 @@ class Camera:
         # ================================= wrist camera =================================
         if self.collect_wrist_camera:
             wrist_camera_config = camera_args[self.wrist_camera_type]
+            wrist_near = wrist_camera_config.get("near", 0.02)
+            wrist_far = wrist_camera_config.get("far", far)
             self.left_camera = scene.add_camera(
                 name="left_camera",
                 width=wrist_camera_config["w"],
                 height=wrist_camera_config["h"],
                 fovy=np.deg2rad(wrist_camera_config["fovy"]),
-                near=near,
-                far=far,
+                near=wrist_near,
+                far=wrist_far,
             )
 
             self.right_camera = scene.add_camera(
@@ -146,8 +148,8 @@ class Camera:
                 width=wrist_camera_config["w"],
                 height=wrist_camera_config["h"],
                 fovy=np.deg2rad(wrist_camera_config["fovy"]),
-                near=near,
-                far=far,
+                near=wrist_near,
+                far=wrist_far,
             )
 
         # ================================= sensor camera =================================

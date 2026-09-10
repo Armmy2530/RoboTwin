@@ -17,3 +17,15 @@ Large_D435:
   fovy: 37
   w: 640
   h: 480
+
+ABC_D405:
+  fovy: 58
+  w: 640
+  h: 480
+  near: 0.02
+
+ABC_D455:
+  fovy: 58
+  w: 640
+  h: 480
+  near: 0.05
