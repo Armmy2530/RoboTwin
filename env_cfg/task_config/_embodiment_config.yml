@@ -18,3 +18,9 @@ openarm-v1:
 
 yam:
   file_path: "./assets/embodiments/yam"
+
+yam-abc:
+  file_path: "./assets/embodiments/yam-abc"
+
+ARX-X5-abc:
+  file_path: "./assets/embodiments/ARX-X5-abc"
