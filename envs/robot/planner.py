@@ -145,9 +145,11 @@ try:
             # output
             res_result = dict()
             if result.success.item() == False:
+                print(f"[plan_single debug] FAILED! status: {result.status}, success: {result.success.item()}, constraint_pose: {constraint_pose}")
                 res_result["status"] = "Fail"
                 return res_result
             else:
+                print(f"[plan_single debug] SUCCESS! status: {result.status}")
                 res_result["status"] = "Success"
                 res_result["position"] = np.array(result.interpolated_plan.position.to("cpu"))
                 res_result["velocity"] = np.array(result.interpolated_plan.velocity.to("cpu"))
