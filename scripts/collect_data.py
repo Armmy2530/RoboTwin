@@ -18,6 +18,10 @@ from argparse import ArgumentParser
 
 from description.utils.generate_episode_instructions import generate_episode_descriptions
 
+# import debugpy
+# debugpy.listen(5678)
+# debugpy.wait_for_client()
+
 current_file_path = os.path.abspath(__file__)
 parent_directory = os.path.dirname(current_file_path)
 
